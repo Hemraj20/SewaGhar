@@ -1,0 +1,48 @@
+import { indexSlice } from "./indexSlice";
+export const registerApi = indexSlice.injectEndpoints({
+    endpoints: (builder) => ({
+        login: builder.mutation({
+            query: (data) => ({
+                url: '/auth/login',
+                method: 'POST',
+                body: data
+            }),
+            invalidatesTags: ['user'],
+        }),
+        register: builder.mutation({
+            query: (data) => ({
+                url: '/auth/register',
+                method: 'POST',
+                body: data
+            }),
+            invalidatesTags: ['user'],
+        }),
+        logout: builder.mutation({
+            query: () => ({
+                url: '/auth/logout',
+                method: 'POST',
+            }),
+            invalidatesTags: ['user'],
+        }),
+        getAllUsers: builder.query({
+            query: () => ({
+                url: '/auth/users',
+            }),
+            providesTags: ['user']
+        }),
+        deleteUser: builder.mutation({
+            query: (id) => ({
+                url: `/auth/delete/${id}`,
+                method: "DELETE"
+            }),
+            invalidatesTags: ['user'],
+        }),
+    })
+});
+export const {
+    useLoginMutation,
+    useRegisterMutation,
+    useLogoutMutation,
+    useDeleteUserMutation,
+    useGetAllUsersQuery,
+} = registerApi;
