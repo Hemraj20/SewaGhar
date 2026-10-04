@@ -1,13 +1,18 @@
 import { Navigate, Outlet } from "react-router-dom";
+import { useGetMeQuery } from "../redux/features/userSlice";
 
 const Guard = () => {
-    const user = JSON.parse(localStorage.getItem("user"));
+    const { data, isLoading } = useGetMeQuery();
 
-    return user ? (
-        <Outlet />
-    ) : (
-        <Navigate to="/login"  />
-    );
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (!data?.loggedUserInfo) {
+        return <Navigate to="/login" replace />;
+    }
+
+    return <Outlet />;
 };
 
 export default Guard;

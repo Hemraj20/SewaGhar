@@ -22,7 +22,7 @@ export const registerApi = indexSlice.injectEndpoints({
                 url: '/auth/logout',
                 method: 'POST',
             }),
-            invalidatesTags: ['user'],
+
         }),
         getAllUsers: builder.query({
             query: () => ({
@@ -37,7 +37,13 @@ export const registerApi = indexSlice.injectEndpoints({
             }),
             invalidatesTags: ['user'],
         }),
-    })
+        getMe: builder.query({
+            query: () => ({
+                url: '/auth/me',
+            }),
+            providesTags: ['user'],
+        }),
+    }),
 });
 export const {
     useLoginMutation,
@@ -45,4 +51,5 @@ export const {
     useLogoutMutation,
     useDeleteUserMutation,
     useGetAllUsersQuery,
+    useGetMeQuery,
 } = registerApi;

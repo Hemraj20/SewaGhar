@@ -23,12 +23,19 @@ export const postApi = indexSlice.injectEndpoints({
             }),
             invalidatesTags: ['post']
         }),
+        getMyost: builder.query({
+            query: () => ({
+                url: '/post/myPost'
+            }),
+            providesTags: ['post']
+        }),
 
     })
 })
 export const {
     useGetAllPostsQuery,
     useDeletePostMutation,
-    useCreatePostMutation
+    useCreatePostMutation,
+    useGetMyostQuery,
 
 } = postApi; 

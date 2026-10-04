@@ -1,5 +1,6 @@
 
 import { NavLink } from 'react-router-dom'
+import { useGetMeQuery } from '../redux/features/userSlice';
 
 const NAV_NavLinkS = [
     { href: "/service", label: "Service" },
@@ -9,9 +10,9 @@ const NAV_NavLinkS = [
 ];
 
 const Header = () => {
+    const { data, isLoading } = useGetMeQuery();
 
-    const user = JSON.parse(localStorage.getItem('user'));
-
+    const user = data?.loggedUserInfo;
     return (
         <header className="sticky top-0 z-20 border-b border-orange-100 bg-white">
             <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
