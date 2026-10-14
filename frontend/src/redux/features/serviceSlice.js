@@ -1,25 +1,14 @@
-import { indexSlice } from "./indexSlice";
-
+import { indexSlice } from "./IndexSlice";
 
 export const serviceApi = indexSlice.injectEndpoints({
-    endpoints: (builder) => ({
-        getAllServices: builder.query({
-            query: () => ({
-                url: '/service/'
-            }),
-            providesTags: ['service'],
-        }),
-        deleteService: builder.mutation({
-            query: (id) => ({
-                url: `/service/${id}`,
-                method: 'DELETE'
-            }),
-            invalidatesTags: ['service']
-        }),
-
-
-    })
-
-})
-
-export const { useGetAllServicesQuery, useDeleteServiceMutation } = serviceApi;
+  endpoints: (builder) => ({
+    getAllservice: builder.query({
+      query: () => ({
+        url: "/service",
+        method: "GET",
+      }),
+      providesTags: ["service"],
+    }),
+  }),
+});
+export const {useGetAllserviceQuery} = serviceApi;

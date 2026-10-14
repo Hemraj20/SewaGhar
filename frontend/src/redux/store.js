@@ -1,13 +1,11 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { indexSlice } from './features/indexSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import { indexSlice } from "./Features/IndexSlice";
 const store = configureStore({
-    reducer: {
-        [indexSlice.reducerPath]: indexSlice.reducer,
-
-    },
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(indexSlice.middleware),
-
+  reducer: {
+    [indexSlice.reducerPath]: indexSlice.reducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(indexSlice.middleware),
 });
 
-export default store; 
+export default store;

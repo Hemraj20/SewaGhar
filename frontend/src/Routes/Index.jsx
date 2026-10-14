@@ -1,14 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
-import PublicRoutes from "./PublicRoutes";
-import PrivateRoutes from "./PrivateRoutes";
-import AuthRoutes from "./AuthRoutes";
-import NotFound from "../Components/NotFound";
-import { AdminRoutes } from "./AdminRoutes";
+import { AuthRoute } from "./AuthRoute";
+import { PublicRoute } from "./PublicRoute";
+import NotFoundPage from "../Components/PublicComponent/NotFoundPage";
+import { PrivateRoute } from "./PrivateRoute";
 
-export const router = createBrowserRouter([
-    PublicRoutes,
-    AdminRoutes,
-    PrivateRoutes,
-    AuthRoutes,
-    { path: '*', element: <NotFound /> }
+export const Router = createBrowserRouter([
+  AuthRoute,
+  PrivateRoute,
+  PublicRoute,
+  { path: "*", element: <NotFoundPage /> },
 ]);
